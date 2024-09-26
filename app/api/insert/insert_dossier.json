@@ -1,0 +1,187 @@
+{
+  "meta": {
+    "$_GET": [
+      {
+        "type": "text",
+        "name": "sort"
+      },
+      {
+        "type": "text",
+        "name": "dir"
+      }
+    ],
+    "$_POST": [
+      {
+        "type": "text",
+        "name": "arg_numdossier"
+      },
+      {
+        "type": "text",
+        "name": "arg_idclient"
+      },
+      {
+        "type": "text",
+        "name": "arg_numdocanalyse"
+      },
+      {
+        "type": "text",
+        "name": "arg_categclient"
+      },
+      {
+        "type": "text",
+        "name": "arg_typehabitation"
+      },
+      {
+        "type": "text",
+        "name": "arg_interventiondmd"
+      },
+      {
+        "type": "text",
+        "name": "arg_idstatut"
+      },
+      {
+        "type": "text",
+        "name": "arg_statutclient"
+      },
+      {
+        "type": "text",
+        "name": "arg_typeclientele"
+      },
+      {
+        "type": "text",
+        "name": "arg_usercrea"
+      },
+      {
+        "type": "text",
+        "name": "arg_typedocument"
+      },
+      {
+        "type": "text",
+        "name": "arg_tmpupdate"
+      },
+      {
+        "type": "text",
+        "name": "arg_numdocument"
+      },
+      {
+        "type": "text",
+        "name": "arg_dossexiste"
+      },
+      {
+        "type": "text",
+        "name": "arg_idclient_spec"
+      },
+      {
+        "type": "text",
+        "name": "arg_valeurdocdata"
+      },
+      {
+        "type": "text",
+        "name": "arg_image"
+      }
+    ]
+  },
+  "exec": {
+    "steps": {
+      "name": "create_dossier",
+      "module": "dbupdater",
+      "action": "custom",
+      "options": {
+        "connection": "dbgescli",
+        "sql": {
+          "query": "call sp_create_dossier(:P1,:P2,:P3,:P4,:P5,:P6,:P7,:P8,:P9,:P10,:P11,:P12,:P13,:P14,:P15,:P16)",
+          "params": [
+            {
+              "name": ":P1",
+              "value": "{{$_POST.arg_numdossier}}",
+              "test": "0"
+            },
+            {
+              "name": ":P2",
+              "value": "{{$_POST.arg_idclient}}",
+              "test": "0"
+            },
+            {
+              "name": ":P3",
+              "value": "{{$_POST.arg_numdocanalyse}}",
+              "test": "310"
+            },
+            {
+              "name": ":P4",
+              "value": "{{$_POST.arg_categclient}}",
+              "test": "1106"
+            },
+            {
+              "name": ":P5",
+              "value": "{{$_POST.arg_typehabitation}}",
+              "test": "1201"
+            },
+            {
+              "name": ":P6",
+              "value": "{{$_POST.arg_interventiondmd}}",
+              "test": "1501"
+            },
+            {
+              "name": ":P7",
+              "value": "{{$_POST.arg_idstatut}}",
+              "test": "1701"
+            },
+            {
+              "name": ":P8",
+              "value": "{{$_POST.arg_statutclient}}",
+              "test": "1106"
+            },
+            {
+              "name": ":P9",
+              "value": "{{$_POST.arg_typeclientele}}",
+              "test": "41"
+            },
+            {
+              "name": ":P10",
+              "value": "{{$_POST.arg_usercrea}}",
+              "test": "47269"
+            },
+            {
+              "name": ":P11",
+              "value": "{{$_POST.arg_typedocument}}",
+              "test": "100"
+            },
+            {
+              "name": ":P12",
+              "value": "{{$_POST.arg_tmpupdate}}",
+              "test": "0"
+            },
+            {
+              "name": ":P13",
+              "value": "{{$_POST.arg_numdocument}}",
+              "test": "0"
+            },
+            {
+              "name": ":P14",
+              "value": "{{$_POST.arg_dossexiste}}",
+              "test": "0"
+            },
+            {
+              "name": ":P15",
+              "value": "{{$_POST.arg_idclient_spec}}",
+              "test": "0"
+            },
+            {
+              "name": ":P16",
+              "value": "{{$_POST.arg_valeurdocdata}}",
+              "test": "{2,\"Hassan\"}"
+            }
+          ]
+        }
+      },
+      "output": true,
+      "meta": [
+        {
+          "name": "out_numdossier",
+          "type": "number"
+        }
+      ],
+      "outputType": "array"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "login.ejs": {
+    "layoutPage": "main",
+    "description": ""
+  },
+  "index.ejs": {
+    "layoutPage": "main",
+    "description": ""
+  },
+  "index2.ejs": {
+    "layoutPage": "mainmenu",
+    "description": ""
+  },
+  "Search_Dossier.ejs": {
+    "layoutPage": "main",
+    "description": "Recherche dossier"
+  },
+  "Recherche_Dossier.ejs": {
+    "layoutPage": "main",
+    "description": ""
+  },
+  "Creer_Dossier.ejs": {
+    "layoutPage": "main",
+    "description": ""
+  }
+}

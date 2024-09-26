@@ -1,0 +1,25 @@
+{
+  "routes": [
+    {
+      "path": "/login",
+      "page": "login",
+      "routeType": "page",
+      "layout": "main"
+    },
+    {
+      "path": "/index2",
+      "page": "index2",
+      "layout": "mainmenu"
+    },
+    {
+      "path": "/Recherche_Dossier",
+      "page": "Recherche_Dossier",
+      "layout": "main"
+    },
+    {
+      "path": "/Creer_Dossier",
+      "page": "Creer_Dossier",
+      "layout": "main"
+    }
+  ]
+}

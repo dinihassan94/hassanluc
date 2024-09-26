@@ -1,0 +1,109 @@
+<!-- Wappler include head-page="layouts/main" fontawesome_5="cdn" is="dmx-app" id="Recherche_Dossier" appConnect="local" components="{dmxBootstrap5Navigation:{},dmxBootstrap4TableGenerator:{},dmxBootstrap4Navigation:{},dmxBrowser:{}}" jquery_slim_35="cdn" bootstrap4="cdn" -->
+<div is="dmx-browser" id="browser1"></div>
+<dmx-serverconnect id="serverconnect1" url="/api/view_read_dossier" dmx-param:num_dossier="form_filter.input1.value" dmx-param:nom_client="" dmx-param:support_proche=""></dmx-serverconnect>
+<meta name="ac:route" content="/Recherche_Dossier">
+<header class="">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <nav class="navbar navbar-expand-lg  justify-content-end">
+                    <a class="navbar-brand me-auto" href="#">Navbar</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar1_collapse" aria-controls="navbar1_collapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbar1_collapse">
+                        <div class="navbar-nav">
+                            <a class="nav-item nav-link active" href="index2" dmx-on:click="">Home</a>
+                            <a class="nav-item nav-link" href="#">About</a>
+                            <a class="nav-item nav-link" href="#">Contact</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<main>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Recherche Dossier</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form id="form_filter">
+
+                    <div class="form-group row">
+                        <label for="input1" class="col-sm-2 col-form-label">Numéro Dossier :<br></label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="input1" name="filter" aria-describedby="input1_help" placeholder="Saisir N° Dossier">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="input2" class="col-sm-2 col-form-label">Nom Client :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="input2" name="filter2" aria-describedby="input2_help" placeholder="Saisir Nom Client">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="input3" class="col-sm-2 col-form-label offset-0">Support Proche :</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="input3" name="filter3" aria-describedby="input3_help" placeholder="Saisir Support Proche">
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col">
+            <button id="btn1" class="btn active text-center btn-primary w-25 h-auto" dmx-on:click="browser1.goto('Creer_Dossier')">Créer Dossier</button>
+        </div>
+    </div>
+    <div class="container pt-1" id="search">
+        <div class="row">
+            <div class="col">
+                <table class="table table-striped table-bordered table-hover table-sm">
+                    <thead>
+                        <tr>
+                            <th>Num dossier</th>
+                            <th>Nom client</th>
+                            <th>Support proche</th>
+                            <th>Nb compteur</th>
+                            <th>Liblong statut</th>
+                            <th>Lib court</th>
+                            <th>Is region</th>
+                        </tr>
+                    </thead>
+                    <tbody is="dmx-repeat" dmx-generator="bs4table" dmx-bind:repeat="serverconnect1.data.custom" id="tableRepeat2">
+                        <tr>
+                            <td dmx-text="num_dossier"></td>
+                            <td dmx-text="nom_client"></td>
+                            <td dmx-text="support_proche"></td>
+                            <td dmx-text="nb_compteur"></td>
+                            <td dmx-text="liblong_statut"></td>
+                            <td dmx-text="lib_court"></td>
+                            <td dmx-text="is_region"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<footer class="fixed-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p class="text-secondary text-center small mb-0 p-1">© Copyright 2024. All Rights Reserved - SI EDD.</p>
+            </div>
+        </div>
+    </div>
+</footer>

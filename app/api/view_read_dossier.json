@@ -1,0 +1,66 @@
+{
+  "meta": {
+    "$_GET": [
+      {
+        "type": "number",
+        "name": "num_dossier"
+      }
+    ]
+  },
+  "exec": {
+    "steps": {
+      "name": "custom",
+      "module": "dbupdater",
+      "action": "custom",
+      "options": {
+        "connection": "dbgescli",
+        "sql": {
+          "query": "SELECT   VW.NUM_DOSSIER, VW.NOM_CLIENT, VW.SUPPORT_PROCHE, VW.NB_COMPTEUR, VW.LIBLONG_STATUT, TV.LIB_COURT,VW.IS_REGION,VW.ID_STATUT,\nVW.INTERVENTION_DMD FROM  VIEW_N_DOSSIER VW, TABLES_VALEURS TV WHERE VW.INTERVENTION_DMD = TV.ID_LIGNE And VW.NUM_DOSSIER =:P1",
+          "params": [
+            {
+              "name": ":P1",
+              "value": "{{$_GET.num_dossier}}",
+              "recid": 1
+            }
+          ]
+        }
+      },
+      "output": true,
+      "meta": [
+        {
+          "name": "num_dossier",
+          "type": "number"
+        },
+        {
+          "name": "nom_client",
+          "type": "text"
+        },
+        {
+          "name": "support_proche",
+          "type": "text"
+        },
+        {
+          "name": "nb_compteur",
+          "type": "number"
+        },
+        {
+          "name": "liblong_statut",
+          "type": "text"
+        },
+        {
+          "name": "is_region",
+          "type": "text"
+        },
+        {
+          "name": "id_statut",
+          "type": "number"
+        },
+        {
+          "name": "intervention_dmd",
+          "type": "number"
+        }
+      ],
+      "outputType": "array"
+    }
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "meta": {
+    "options": {
+      "linkedFile": "/views/login.ejs",
+      "linkedForm": "login1"
+    },
+    "$_GET": [
+      {
+        "type": "text",
+        "name": "sort"
+      },
+      {
+        "type": "text",
+        "name": "dir"
+      }
+    ],
+    "$_POST": [
+      {
+        "type": "text",
+        "fieldName": "matricule",
+        "name": "matricule"
+      },
+      {
+        "type": "text",
+        "fieldName": "motpasse",
+        "name": "motpasse"
+      }
+    ]
+  },
+  "exec": {
+    "steps": [
+      {
+        "name": "query",
+        "module": "dbconnector",
+        "action": "single",
+        "options": {
+          "connection": "dbgescli",
+          "sql": {
+            "type": "select",
+            "columns": [
+              {
+                "table": "employe",
+                "column": "matricule",
+                "schema": "gescli",
+                "recid": 1
+              },
+              {
+                "table": "employe",
+                "column": "motpasse",
+                "schema": "gescli",
+                "recid": 2
+              }
+            ],
+            "params": [],
+            "table": {
+              "name": "employe",
+              "schema": "gescli"
+            },
+            "primary": "matricule",
+            "joins": [],
+            "wheres": {
+              "condition": "AND",
+              "rules": [
+                {
+                  "id": "gescli.employe.matricule",
+                  "field": "gescli.employe.matricule",
+                  "type": "double",
+                  "operator": "equal",
+                  "value": 47269,
+                  "data": {
+                    "table": "employe",
+                    "column": "matricule",
+                    "type": "number",
+                    "columnObj": {
+                      "type": "decimal",
+                      "primary": true,
+                      "unique": true,
+                      "nullable": false,
+                      "name": "matricule"
+                    },
+                    "schema": "gescli"
+                  },
+                  "operation": "=",
+                  "table": "employe"
+                }
+              ],
+              "conditional": null,
+              "valid": true
+            },
+            "query": "select \"matricule\", \"motpasse\" from \"gescli\".\"employe\" where \"gescli\".\"employe\".\"matricule\" = ?"
+          }
+        },
+        "output": false,
+        "meta": [
+          {
+            "type": "number",
+            "name": "matricule"
+          },
+          {
+            "type": "text",
+            "name": "motpasse"
+          }
+        ],
+        "outputType": "object"
+      },
+      {
+        "name": "identity",
+        "module": "auth",
+        "action": "login",
+        "options": {
+          "provider": "security",
+          "username": "{{$_POST.matricule}}",
+          "remember": "",
+          "password": "{{$_POST.motpasse}}"
+        },
+        "output": true,
+        "meta": []
+      }
+    ]
+  }
+}

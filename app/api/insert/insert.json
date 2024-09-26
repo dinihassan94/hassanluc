@@ -1,0 +1,59 @@
+{
+  "meta": {
+    "options": {
+      "linkedFile": "/views/index.ejs",
+      "linkedForm": "login1"
+    },
+    "$_POST": [
+      {
+        "type": "text",
+        "fieldName": "email",
+        "name": "argnum_devis"
+      },
+      {
+        "type": "text",
+        "fieldName": "password",
+        "name": "arguser_crea"
+      },
+      {
+        "type": "text",
+        "name": "argobservation"
+      }
+    ]
+  },
+  "exec": {
+    "steps": {
+      "name": "devis_annule",
+      "module": "dbupdater",
+      "action": "custom",
+      "options": {
+        "connection": "dbgescli",
+        "sql": {
+          "query": "call sp_devis_annul_remplace(:P1,:P2,:P3)",
+          "params": [
+            {
+              "name": ":P1",
+              "value": "{{$_POST.argnum_devis}}",
+              "test": "202307286",
+              "recid": 1
+            },
+            {
+              "name": ":P2",
+              "value": "{{$_POST.arguser_crea}}",
+              "test": "47269",
+              "recid": 2
+            },
+            {
+              "name": ":P3",
+              "value": "{{$_POST.argobservation}}",
+              "test": "test si",
+              "recid": 3
+            }
+          ]
+        }
+      },
+      "output": true,
+      "meta": []
+    }
+  }
+}

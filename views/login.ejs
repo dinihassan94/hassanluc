@@ -1,0 +1,46 @@
+<!-- Wappler include head-page="layouts/main" fontawesome_5="cdn" is="dmx-app" id="login" appconnect="local" bootstrap5="local" components="{dmxBrowser:{},dmxNotifications:{}}" -->
+<dmx-notifications id="notifies1"></dmx-notifications>
+<div is="dmx-browser" id="browser1"></div>
+<div class="container mt-5">
+    <form id="login1" method="post" is="dmx-serverconnect-form" action="/api/login/login" dmx-on:success="browser1.goto('index2')" dmx-on:unauthorized="notifies1.danger('Vérifier login &amp; mot de passe')">
+        <div class="row">
+
+            <div class="col-1 me-n2 pe-0">
+                <img src="/assets/images/logo_fastscan64.png">
+            </div>
+            <div class="col-12 col-md-8 col-xl-5 text-start col-lg-7">
+                <div class="row">
+                    <div class="col">
+                        <h1 class="text-primary">FastScan | Numérisation des documents</h1>
+                        <p class="text-h3">Application Web - EDD</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mt-4 col-6 offset-2">
+                        <input type="number" id="inp_email" name="matricule" class="form-control" placeholder="Matricule">
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="offset-2 col-6">
+                        <input type="password" id="inp_password" name="motpasse" class="form-control" placeholder="Password">
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="offset-2 col-6">
+                        <button id="login1_submit" class="btn btn-primary w-100" type="submit" dmx-on:click="login1.submit()">Connexion</button>
+                    </div>
+                </div>
+                <div class="row text-center">
+
+                    <label class="form-label">EDD&nbsp;<i class="far fa-copyright"></i>&nbsp;2024<br></label>
+                    <div class="mt-n4 col-12"><img class="rounded-0 w-10 w-auto" src="/assets/images/logoedd64.png" width="40" height="40"></div>
+                </div>
+            </div>
+            <div class="col">
+                <img src="/assets/images/gb_fastScan_login3.jpg" width="250">
+            </div>
+        </div>
+    </form>
+</div>
+
+<meta name="ac:route" content="/login">

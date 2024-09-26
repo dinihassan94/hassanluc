@@ -1,0 +1,20 @@
+{
+  "name": "dbgescli",
+  "module": "dbconnector",
+  "action": "connect",
+  "options": {
+    "client": "postgres",
+    "connection": {
+      "host": "192.168.8.50",
+      "port": 5444,
+      "user": "gescli",
+      "password": "gescli",
+      "database": "edbtest"
+    },
+    "tz": "utc",
+    "meta": {}
+  },
+  "fileName": "dbgescli.json",
+  "actionFilePath": "file:///C:/Users/47269/Documents/appli%20web%20fastscan/app/modules/connections/dbgescli.json",
+  "serverType": "node"
+}

@@ -1,0 +1,297 @@
+{
+  "meta": {
+    "$_GET": [
+      {
+        "type": "number",
+        "name": "num_dossier"
+      },
+      {
+        "type": "text",
+        "name": "sort"
+      },
+      {
+        "type": "text",
+        "name": "dir"
+      },
+      {
+        "type": "text",
+        "name": "nom_client"
+      },
+      {
+        "type": "text",
+        "name": "support_proche"
+      }
+    ]
+  },
+  "exec": {
+    "steps": {
+      "name": "query",
+      "module": "dbconnector",
+      "action": "select",
+      "options": {
+        "connection": "dbgescli",
+        "sql": {
+          "type": "select",
+          "columns": [
+            {
+              "table": "n_dossier_client",
+              "column": "*",
+              "schema": "gescli",
+              "recid": 1
+            }
+          ],
+          "params": [
+            {
+              "operator": "contains",
+              "type": "expression",
+              "name": ":P1",
+              "value": "{{$_GET.nom_client}}",
+              "test": ""
+            },
+            {
+              "operator": "contains",
+              "type": "expression",
+              "name": ":P2",
+              "value": "{{$_GET.support_proche}}",
+              "test": ""
+            },
+            {
+              "operator": "equal",
+              "type": "expression",
+              "name": ":P3",
+              "value": "{{$_GET.num_dossier}}",
+              "test": ""
+            }
+          ],
+          "table": {
+            "name": "n_dossier_client",
+            "schema": "gescli"
+          },
+          "primary": "num_dossier",
+          "joins": [],
+          "wheres": {
+            "condition": "OR",
+            "rules": [
+              {
+                "id": "gescli.n_dossier_client.nom_client",
+                "field": "gescli.n_dossier_client.nom_client",
+                "type": "string",
+                "operator": "contains",
+                "value": "{{$_GET.nom_client}}",
+                "data": {
+                  "table": "n_dossier_client",
+                  "column": "nom_client",
+                  "type": "text",
+                  "columnObj": {
+                    "type": "string",
+                    "maxLength": 80,
+                    "primary": false,
+                    "unique": false,
+                    "nullable": false,
+                    "name": "nom_client"
+                  },
+                  "schema": "gescli"
+                },
+                "operation": "LIKE",
+                "table": "n_dossier_client"
+              },
+              {
+                "id": "gescli.n_dossier_client.support_proche",
+                "field": "gescli.n_dossier_client.support_proche",
+                "type": "string",
+                "operator": "contains",
+                "value": "{{$_GET.support_proche}}",
+                "data": {
+                  "table": "n_dossier_client",
+                  "column": "support_proche",
+                  "type": "text",
+                  "columnObj": {
+                    "type": "string",
+                    "maxLength": 6,
+                    "primary": false,
+                    "unique": false,
+                    "nullable": true,
+                    "name": "support_proche"
+                  },
+                  "schema": "gescli"
+                },
+                "operation": "LIKE",
+                "table": "n_dossier_client"
+              },
+              {
+                "id": "gescli.n_dossier_client.num_dossier",
+                "field": "gescli.n_dossier_client.num_dossier",
+                "type": "double",
+                "operator": "equal",
+                "value": "{{$_GET.num_dossier}}",
+                "data": {
+                  "table": "n_dossier_client",
+                  "column": "num_dossier",
+                  "type": "number",
+                  "columnObj": {
+                    "type": "decimal",
+                    "primary": true,
+                    "unique": true,
+                    "nullable": false,
+                    "name": "num_dossier"
+                  },
+                  "schema": "gescli"
+                },
+                "operation": "=",
+                "table": "n_dossier_client"
+              }
+            ],
+            "conditional": null,
+            "valid": true
+          },
+          "query": "select * from \"gescli\".\"n_dossier_client\" where \"gescli\".\"n_dossier_client\".\"nom_client\" like ? or \"gescli\".\"n_dossier_client\".\"support_proche\" like ? or \"gescli\".\"n_dossier_client\".\"num_dossier\" = ?",
+          "orders": []
+        }
+      },
+      "output": true,
+      "meta": [
+        {
+          "type": "number",
+          "name": "num_dossier"
+        },
+        {
+          "type": "text",
+          "name": "nom_client"
+        },
+        {
+          "type": "text",
+          "name": "cin"
+        },
+        {
+          "type": "text",
+          "name": "pl"
+        },
+        {
+          "type": "text",
+          "name": "compteur"
+        },
+        {
+          "type": "text",
+          "name": "registre_commerce"
+        },
+        {
+          "type": "datetime",
+          "name": "date_crea"
+        },
+        {
+          "type": "number",
+          "name": "user_crea"
+        },
+        {
+          "type": "text",
+          "name": "adresse"
+        },
+        {
+          "type": "text",
+          "name": "quartier"
+        },
+        {
+          "type": "number",
+          "name": "portable"
+        },
+        {
+          "type": "text",
+          "name": "email"
+        },
+        {
+          "type": "text",
+          "name": "support_proche"
+        },
+        {
+          "type": "number",
+          "name": "num_doc_analyse"
+        },
+        {
+          "type": "number",
+          "name": "type_habitation"
+        },
+        {
+          "type": "text",
+          "name": "equipement_tex"
+        },
+        {
+          "type": "number",
+          "name": "intervention_dmd"
+        },
+        {
+          "type": "number",
+          "name": "categ_client"
+        },
+        {
+          "type": "number",
+          "name": "ps_estime"
+        },
+        {
+          "type": "text",
+          "name": "observation"
+        },
+        {
+          "type": "number",
+          "name": "user_maj"
+        },
+        {
+          "type": "datetime",
+          "name": "date_maj"
+        },
+        {
+          "type": "number",
+          "name": "id_statut"
+        },
+        {
+          "type": "text",
+          "name": "id_piece"
+        },
+        {
+          "type": "text",
+          "name": "type_piece"
+        },
+        {
+          "type": "datetime",
+          "name": "date_demande"
+        },
+        {
+          "type": "number",
+          "name": "statut_client"
+        },
+        {
+          "type": "number",
+          "name": "contrat_en_cours"
+        },
+        {
+          "type": "number",
+          "name": "id_client"
+        },
+        {
+          "type": "number",
+          "name": "nombre_compteur"
+        },
+        {
+          "type": "text",
+          "name": "ps_souhaitee"
+        },
+        {
+          "type": "number",
+          "name": "type_clientele"
+        },
+        {
+          "type": "text",
+          "name": "supprime"
+        },
+        {
+          "type": "number",
+          "name": "contrat_r_prec"
+        },
+        {
+          "type": "number",
+          "name": "id_client_util"
+        }
+      ],
+      "outputType": "array"
+    }
+  }
+}

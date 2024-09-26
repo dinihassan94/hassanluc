@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "$_GET": [
+      {
+        "type": "text",
+        "name": "sort"
+      },
+      {
+        "type": "text",
+        "name": "dir"
+      },
+      {
+        "type": "text",
+        "name": "filter"
+      }
+    ]
+  },
+  "exec": {
+    "steps": [
+      {
+        "name": "typeclient",
+        "module": "dbupdater",
+        "action": "custom",
+        "options": {
+          "connection": "dbgescli",
+          "sql": {
+            "query": "select 0 as id,'-- CHOISIR --' as libelle from dual union all\nselect ID_LIGNE, LIB_LONG from tables_valeurs where code_table='TCLU'",
+            "params": []
+          }
+        },
+        "output": true,
+        "meta": [
+          {
+            "name": "id",
+            "type": "number"
+          },
+          {
+            "name": "libelle",
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "name": "custom",
+        "module": "dbupdater",
+        "action": "custom",
+        "options": {
+          "connection": "dbgescli"
+        },
+        "output": true
+      }
+    ]
+  }
+}

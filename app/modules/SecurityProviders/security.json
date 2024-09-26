@@ -1,0 +1,23 @@
+{
+  "name": "security",
+  "module": "auth",
+  "action": "provider",
+  "options": {
+    "secret": "OOvczT0F1h8TBYs",
+    "provider": "Database",
+    "connection": "dbgescli",
+    "users": {
+      "table": "gescli.employe",
+      "identity": "matricule",
+      "username": "matricule",
+      "password": "motpasse"
+    },
+    "permissions": {}
+  },
+  "meta": [
+    {
+      "name": "identity",
+      "type": "text"
+    }
+  ]
+}
